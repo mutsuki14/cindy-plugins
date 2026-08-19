@@ -1,0 +1,5 @@
+{
+  "name": "Aegis Method Pack",
+  "description": "Bundles the Aegis engineering method pack as one Agent skill: baseline-first planning, systematic debugging, evidence-before-done verification, plan/design pressure-tests, ADRs, and long-task governance. After install, Claude Code and Codex discover it automatically.",
+  "whenToUse": "Disciplined engineering for coding tasks: systematic debugging before fixes, proof before claiming done, implementation plans, grilling a plan or design, Aegis goal framing, TDD routing, ADRs, code review, parallel subagents, git worktrees, long-task continuation, retiring legacy logic."
+}

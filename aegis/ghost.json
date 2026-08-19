@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "id": "aegis",
+  "name": "Aegis Method Pack",
+  "version": "2.8.3",
+  "kind": "chip",
+  "locales": {
+    "zh-CN": "locales/zh-CN.json",
+    "en": "locales/en.json"
+  },
+  "description": "Bundles the Aegis engineering method pack as one Agent skill: baseline-first planning, systematic debugging, evidence-before-done verification, plan/design pressure-tests, ADRs, and long-task governance. After install, Claude Code and Codex discover it automatically.",
+  "whenToUse": "Disciplined engineering for coding tasks: systematic debugging before fixes, proof before claiming done, implementation plans, grilling a plan or design, Aegis goal framing, TDD routing, ADRs, code review, parallel subagents, git worktrees, long-task continuation, retiring legacy logic.",
+  "icon": "assets/icon.png",
+  "entry": "main.js",
+  "slots": [
+    "skill"
+  ],
+  "skill": {
+    "items": [
+      {
+        "dir": "skills/aegis",
+        "name": "aegis",
+        "description": "Use when starting a turn or checking Aegis skill routing. Aegis is an engineering method pack: baseline-first planning, systematic debugging, evidence-before-done verification, plan/design pressure-tests, goal framing, TDD routing, ADRs, code review, parallel subagents, worktrees, long-task continuation, and anti-entropy governance. Load the matching method file under methods/ before acting."
+      }
+    ]
+  }
+}

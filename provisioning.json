@@ -1,0 +1,8 @@
+{
+  "//": "仓库级配给清单(单文件即仓级配置,format = cindy-official-plugin 同款,由本人维护)。ghosts 对象 = 市场内插件总表。audience 可选:'all',或 { userIds: [...], emails: [...] } 用于限定可见范围。tier 可选:'builtin'(官方内置)或 'enterprise'(企业私有)——个人市场不用填。",
+  "ghosts": {
+    "aegis": {
+      "audience": "all"
+    }
+  }
+}
