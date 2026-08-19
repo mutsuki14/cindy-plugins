@@ -1,0 +1,11 @@
+{
+  "name": "mutsuki14-cindy-plugins",
+  "interface": {
+    "displayName": "mutsuki14 的插件市场"
+  },
+  "plugins": [
+    {
+      "source": "./aegis"
+    }
+  ]
+}
