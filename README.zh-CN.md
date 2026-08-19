@@ -31,6 +31,7 @@ aegis/
 ```
 
 - 每个插件目录名 = `ghost.json` 里的 `id`;
+- `.agents/plugins/marketplace.json` 是 Cindy「添加插件市场」识别的市场清单(name + plugins 列表,source 为相对路径),新增插件必须登记;
 - 根目录 `provisioning.json` 登记市场内所有插件及可见范围(audience);
 - 发布新版本时必须 bump `ghost.json.version`(SemVer);
 - 本地校验:打包前用 Cindy 的 `ghost_forge_pack` 走一遍 manifest 校验。

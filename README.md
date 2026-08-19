@@ -25,6 +25,7 @@ Missing a plugin you want? [Open an issue](../../issues/new).
 ## Repository conventions
 
 - Each plugin directory name equals the `id` in its `ghost.json`;
+- `.agents/plugins/marketplace.json` is the market manifest Cindy looks for when adding a custom marketplace (`name` + `plugins[]` with relative `source` paths) — register every new plugin there;
 - `provisioning.json` registers every plugin in this marketplace and its audience;
 - Bump `ghost.json.version` (SemVer) on every release;
 - Validate locally by running Cindy's `ghost_forge_pack` before committing.
