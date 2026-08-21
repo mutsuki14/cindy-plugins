@@ -1,0 +1,4 @@
+{
+  "name": "Cindy Plugins Marketplace",
+  "install": "sudo apt-get update && sudo apt-get install -y --no-install-recommends graphviz"
+}
