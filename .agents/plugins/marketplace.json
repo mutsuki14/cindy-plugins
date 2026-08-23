@@ -6,6 +6,9 @@
   "plugins": [
     {
       "source": "./aegis"
+    },
+    {
+      "source": "./helix"
     }
   ]
 }
