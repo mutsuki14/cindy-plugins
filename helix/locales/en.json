@@ -4,7 +4,7 @@
   "whenToUse": "Disciplined coding: clarify vague requirements, write specs and acceptance criteria, root-cause debugging, verify evidence before claiming done, non-converging iterations, getting unstuck, long cross-session tasks, ADRs, retiring legacy code. Also on: helix, seed, grill, unstuck.",
   "tools": {
     "helix_gate": {
-      "description": "Helix quantitative gate calculator, three deterministic auditable modes. mode=ambiguity: ambiguity gate (threshold ≤0.2), per-dimension clarity self-scores goal/constraints/success plus context for brownfield; mode=drift: drift gate (threshold ≤0.3), deviation scores goal/constraints/ontology; mode=loop: evolution-loop ruling — pass ac_total and per-loop ac_passed_history (plus spinning/oscillation flags), returns converged/continue/unstuck/cap-reached.",
+      "description": "Helix quantitative gate calculator, three deterministic auditable modes. mode=ambiguity: ambiguity gate (threshold ≤0.2), per-dimension clarity self-scores goal/constraints/success plus context for brownfield; mode=drift: drift gate (threshold ≤0.3), deviation scores goal/constraints/ontology; mode=loop: evolution-loop ruling — pass ac_total and per-loop ac_passed_history (plus spinning/oscillation flags); auto-detects no-progress and diminishing-returns projection, returns converged/continue/unstuck/cap-reached. Optional threshold passes a retro-calibrated stricter gate (tighten-only).",
       "parameters": {
         "/properties/mode": { "description": "ambiguity = ambiguity gate; drift = drift gate; loop = convergence/stall ruling for the evolution loop" },
         "/properties/goal": { "description": "Goal dimension score (ambiguity/drift modes)" },
@@ -13,6 +13,7 @@
         "/properties/ontology": { "description": "Ontology deviation score (required in drift mode)" },
         "/properties/context": { "description": "Project-context dimension score (ambiguity mode, brownfield projects only)" },
         "/properties/brownfield": { "description": "Whether this is a brownfield project (switches ambiguity weights and requires context)" },
+        "/properties/threshold": { "description": "Optional retro-calibrated stricter threshold, tighten-only (ambiguity 0.05–0.2, drift 0.1–0.3; values looser than the default are rejected)" },
         "/properties/ac_total": { "description": "Total number of acceptance criteria (required in loop mode)" },
         "/properties/ac_passed_history": { "description": "ACs passed at the end of each loop, in order; last entry is the current loop (required in loop mode)" },
         "/properties/max_loops": { "description": "Hard loop cap, default 5 (loop mode)" },

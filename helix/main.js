@@ -30,7 +30,17 @@ cindy.onHostMessage(async function (msg) {
     return typeof v === 'number' && v >= 0 && v <= 1 ? v : null;
   };
 
+  const pickThreshold = (def, min) => {
+    if (args.threshold === undefined) return def;
+    if (typeof args.threshold !== 'number' || args.threshold < min || args.threshold > def) {
+      return null; // 只允许收紧：min ≤ threshold ≤ 默认值
+    }
+    return args.threshold;
+  };
+
   if (args.mode === 'ambiguity') {
+    const threshold = pickThreshold(GATES.ambiguity.threshold, 0.05);
+    if (threshold === null) return fail(`ambiguity 门槛只能收紧：threshold 须在 0.05–${GATES.ambiguity.threshold} 之间`);
     const weights = args.brownfield ? GATES.ambiguity.brownfield : GATES.ambiguity.greenfield;
     const contributions = {};
     let claritysum = 0;
@@ -49,10 +59,11 @@ cindy.onHostMessage(async function (msg) {
         gate: 'ambiguity',
         profile: args.brownfield ? 'brownfield' : 'greenfield',
         score,
-        threshold: GATES.ambiguity.threshold,
-        pass: score <= GATES.ambiguity.threshold,
+        threshold,
+        tightened: threshold !== GATES.ambiguity.threshold,
+        pass: score <= threshold,
         contributions,
-        verdict: score <= GATES.ambiguity.threshold
+        verdict: score <= threshold
           ? '歧义门通过：可以结晶 Seed。'
           : '歧义门未过：回到访谈/查证，优先补 weighted 值最低的维度。评分依据必须已写在对话里。'
       }
@@ -61,6 +72,8 @@ cindy.onHostMessage(async function (msg) {
   }
 
   if (args.mode === 'drift') {
+    const threshold = pickThreshold(GATES.drift.threshold, 0.1);
+    if (threshold === null) return fail(`drift 门槛只能收紧：threshold 须在 0.1–${GATES.drift.threshold} 之间`);
     const weights = GATES.drift.weights;
     const contributions = {};
     let score = 0;
@@ -78,10 +91,11 @@ cindy.onHostMessage(async function (msg) {
       result: {
         gate: 'drift',
         score,
-        threshold: GATES.drift.threshold,
-        pass: score <= GATES.drift.threshold,
+        threshold,
+        tightened: threshold !== GATES.drift.threshold,
+        pass: score <= threshold,
         contributions,
-        verdict: score <= GATES.drift.threshold
+        verdict: score <= threshold
           ? '漂移门通过：可以出证据收据。'
           : '漂移门超标：停止宣称完成——回 clarify 走 reseed，或回滚越界部分。'
       }
@@ -117,9 +131,12 @@ cindy.onHostMessage(async function (msg) {
     } else if (prev !== null && last <= prev) {
       verdict = 'unstuck';
       reason = '无进展（本圈 AC 通过数未超过上圈）：视为停滞，先脱困再进圈。';
+    } else if (prev !== null && (total - last) > (last - prev) * (maxLoops - loopsUsed)) {
+      verdict = 'unstuck';
+      reason = `收益递减投影：按本圈速度（每圈 +${last - prev} 条 AC），剩余 ${maxLoops - loopsUsed} 圈内无法通过全部 ${total} 条。先脱困换路径，或与用户商量缩小范围 reseed。`;
     } else {
       verdict = 'continue';
-      reason = '有上升：写完本圈失败分析后进入下一圈。';
+      reason = '有上升且按当前速度可在圈数内收敛：写完本圈失败分析后进入下一圈。';
     }
     await cindy.send({
       type: 'tool-result',
