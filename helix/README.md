@@ -36,6 +36,10 @@ main.js     helix_gate：歧义门/漂移门/loop 裁决的确定性计算器
 
 要在 Cindy 之外（Claude Code / Codex / OpenCode / Pi / OMP 等）使用 Helix，见独立技能包仓库：[mutsuki14/helix](https://github.com/mutsuki14/helix)。同一宿主不要同时装两个版本。
 
+## 维护约定
+
+更新 Helix 时必须同步三处、版本号一致：本目录（含 `ghost_forge_pack` 重打包）、独立技能包仓库 [mutsuki14/helix](https://github.com/mutsuki14/helix)（转换规则见其 [MAINTAINING.md](https://github.com/mutsuki14/helix/blob/main/MAINTAINING.md)）、已装入实例。门槛逻辑改动须在 `main.js` 与对方仓库 `scripts/gate.mjs` 双端同改并测试。
+
 ## 使用
 
 装入并开启后：`$helix <任务>` 显式进环；或直接布置工程任务，Agent 会按 `whenToUse` 自动想起。口令：`helix seed / grill / plan / review / unstuck / status / retro / adr`。
