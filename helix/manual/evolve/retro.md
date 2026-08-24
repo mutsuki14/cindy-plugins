@@ -36,10 +36,10 @@
 每次 L2 任务 retro 时，往 `.helix/calibration.jsonl` **追加一行**（没有就创建）：
 
 ```json
-{"t":"2026-08-24","task":"任务一句话","ambiguity":0.18,"loops":3,"drift":0.1}
+{"t":"2026-08-24","task":"任务一句话","ambiguity":0.18,"loops":3,"drift":0.1,"level_initial":"L1","level_final":"L2"}
 ```
 
-字段：`ambiguity`=当时歧义门得分；`loops`=实际用掉的圈数；`drift`=最终漂移分（可省）。
+字段：`ambiguity`=当时歧义门得分；`loops`=实际用掉的圈数；`drift`=最终漂移分（可省）；`level_initial`/`level_final`=初判级别与实际走完的级别（可省）——两者不同即分级误判，calibrate 会统计误判率与方向。
 
 积累 ≥5 条后，每次 retro 顺手跑一次校准统计——读出全部记录传给工具：
 
