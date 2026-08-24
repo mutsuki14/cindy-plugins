@@ -4,15 +4,20 @@
   "whenToUse": "Disciplined coding: clarify vague requirements, write specs and acceptance criteria, root-cause debugging, verify evidence before claiming done, non-converging iterations, getting unstuck, long cross-session tasks, ADRs, retiring legacy code. Also on: helix, seed, grill, unstuck.",
   "tools": {
     "helix_gate": {
-      "description": "Helix quantitative gate calculator. Pass your per-dimension self-scores (0–1, justified in the conversation first); it applies Helix's fixed weights and returns the score, threshold, and pass/fail. mode=ambiguity: ambiguity gate (threshold ≤0.2), dimensions goal/constraints/success plus context for brownfield; mode=drift: drift gate (threshold ≤0.3), dimensions goal/constraints/ontology as deviation scores. The tool only does deterministic weighting so gates stay auditable.",
+      "description": "Helix quantitative gate calculator, three deterministic auditable modes. mode=ambiguity: ambiguity gate (threshold ≤0.2), per-dimension clarity self-scores goal/constraints/success plus context for brownfield; mode=drift: drift gate (threshold ≤0.3), deviation scores goal/constraints/ontology; mode=loop: evolution-loop ruling — pass ac_total and per-loop ac_passed_history (plus spinning/oscillation flags), returns converged/continue/unstuck/cap-reached.",
       "parameters": {
-        "/properties/mode": { "description": "ambiguity = ambiguity gate (clarity scores, higher is clearer); drift = drift gate (deviation scores, higher is more drifted)" },
-        "/properties/goal": { "description": "Goal dimension score" },
-        "/properties/constraints": { "description": "Constraints dimension score" },
+        "/properties/mode": { "description": "ambiguity = ambiguity gate; drift = drift gate; loop = convergence/stall ruling for the evolution loop" },
+        "/properties/goal": { "description": "Goal dimension score (ambiguity/drift modes)" },
+        "/properties/constraints": { "description": "Constraints dimension score (ambiguity/drift modes)" },
         "/properties/success": { "description": "Success-criteria dimension score (required in ambiguity mode)" },
         "/properties/ontology": { "description": "Ontology deviation score (required in drift mode)" },
         "/properties/context": { "description": "Project-context dimension score (ambiguity mode, brownfield projects only)" },
-        "/properties/brownfield": { "description": "Whether this is a brownfield project (switches ambiguity weights and requires context)" }
+        "/properties/brownfield": { "description": "Whether this is a brownfield project (switches ambiguity weights and requires context)" },
+        "/properties/ac_total": { "description": "Total number of acceptance criteria (required in loop mode)" },
+        "/properties/ac_passed_history": { "description": "ACs passed at the end of each loop, in order; last entry is the current loop (required in loop mode)" },
+        "/properties/max_loops": { "description": "Hard loop cap, default 5 (loop mode)" },
+        "/properties/repeated_same_error": { "description": "Whether this loop hit essentially the same error as the previous one (spinning signal, loop mode)" },
+        "/properties/oscillation": { "description": "Whether fixes flip-flop between breaking A and breaking B (oscillation signal, loop mode)" }
       }
     }
   }

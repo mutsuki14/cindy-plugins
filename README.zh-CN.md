@@ -16,7 +16,7 @@
 |  | 插件 | 目录 | 说明 |
 | --- | --- | --- | --- |
 | <img src="./aegis/assets/icon.png" width="22" alt=""> | Aegis Method Pack | [`aegis`](./aegis) | 把 Aegis 工程方法包打包成一个 Agent 技能:基线先行的计划、系统化调试、先拿证据再说完成、计划/设计压测、ADR、长任务治理。装入后 Claude Code 与 Codex 自动发现 |
-| <img src="./helix/assets/icon.png" width="22" alt=""> | Helix 方法环 | [`helix`](./helix) | 零配置工程方法环:融合 Aegis(基线优先、先证据后完成)与 Ouroboros(澄清 → 种子 → 执行 → 验证 → 进化)。歧义/漂移量化门由随包 `helix_gate` 工具确定性计算,手册经 `ghost_manual` 按需加载,无需任何额外 LLM 设置 |
+| <img src="./helix/assets/icon.png" width="22" alt=""> | Helix 方法环 | [`helix`](./helix) | 零配置工程方法环 v2:融合 Aegis(基线优先、先证据后完成)、Ouroboros(澄清→种子→执行→验证→进化、停滞脱困)与 Superpowers 系工作流(计划、两阶段评审、TDD 反模式、代码评审、worktree)。歧义/漂移/循环裁决由 `helix_gate` 确定性计算,手册经 `ghost_manual` 按需加载,九人格提示词随包,无需任何额外 LLM 设置 |
 
 想看的插件不在表里?[提 issue](../../issues/new) 许愿。
 

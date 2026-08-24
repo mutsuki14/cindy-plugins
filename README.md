@@ -19,7 +19,7 @@ Personal [Cindy](https://github.com/makecindy/cindy) plugin marketplace maintain
 |  | Plugin | Directory | Description |
 | --- | --- | --- | --- |
 | <img src="./aegis/assets/icon.png" width="22" alt=""> | Aegis Method Pack | [`aegis`](./aegis) | Bundles the Aegis engineering method pack as one Agent skill: baseline-first planning, systematic debugging, evidence-before-done verification, plan/design pressure-tests, ADRs, and long-task governance. After install, Claude Code and Codex discover it automatically |
-| <img src="./helix/assets/icon.png" width="22" alt=""> | Helix Method Loop | [`helix`](./helix) | Zero-config engineering method loop fusing Aegis (baseline-first, evidence-before-done discipline) with Ouroboros (clarify → seed → build → verify → evolve). Quantitative ambiguity/drift gates via the bundled `helix_gate` tool; manuals load on demand via `ghost_manual` |
+| <img src="./helix/assets/icon.png" width="22" alt=""> | Helix Method Loop | [`helix`](./helix) | Zero-config engineering method loop v2: fuses Aegis (baseline-first, evidence-before-done), Ouroboros (clarify → seed → build → verify → evolve, stall detection & unstuck) and Superpowers-style workflows (plans, two-phase review, TDD anti-patterns, code review, worktrees). Ambiguity/drift/loop rulings computed deterministically by `helix_gate`; manuals load on demand via `ghost_manual`; nine dispatch-ready personas included; no extra LLM setup |
 
 Missing a plugin you want? [Open an issue](../../issues/new).
 
