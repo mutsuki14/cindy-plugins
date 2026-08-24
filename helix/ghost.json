@@ -4,7 +4,7 @@
   "name": "Helix Method Loop",
   "description": "Helix 工程方法环：融合 Aegis 的基线优先/证据验证纪律与 Ouroboros 的澄清-种子-评估-进化闭环。纯方法手册，零配置——不需要任何额外 LLM 设置、API key、守护进程或外部依赖，所有量化门槛由当前 Agent 自评执行。",
   "whenToUse": "编码与工程任务需要纪律时找我：需求含糊要先澄清、写规格与验收标准、动手前对齐项目基线、修 bug 要找根因、宣称完成前要验证证据、多轮迭代不收敛、任务卡住要脱困、长任务跨会话续航、记录架构决策、清退旧逻辑。用户说 helix、种子/Seed、审问计划、grill、脱困/unstuck 时也找我。",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "entry": "main.js",
   "icon": "assets/icon.png",
   "command": "helix",
@@ -85,7 +85,7 @@
       {
         "dir": "manual/core",
         "name": "core",
-        "description": "总路由：先读这份。复杂度分级 L0/L1/L2、努力度阶梯（按风险配给子代理与仪式）、方法环总览、全部深读文件索引、口令表、文件必要性门；另含九人格清单（personas.md，派发即用提示词）。"
+        "description": "总路由：先读这份。复杂度分级 L0/L1/L2、努力度阶梯（按风险配给子代理与仪式）、方法环总览、全部深读文件索引、口令表、文件必要性门；另含九人格清单（personas.md）与领域专家人格包（domains.md：迁移/并发/安全/性能/前端）。"
       },
       {
         "dir": "manual/clarify",
@@ -100,7 +100,7 @@
       {
         "dir": "manual/verify",
         "name": "verify",
-        "description": "验证：三级评估门（机械→语义→多人格子代理共识）、证据收据与置信分级 A/B/C、漂移度量、完成边界，宣称完成前必读；深读：review.md 代码评审请求与接收纪律。"
+        "description": "验证：三级评估门（机械→语义→多人格共识）、收据置信 A/B/C 由 receipt 模式确定性判定、漂移度量、完成边界，宣称完成前必读；深读：review.md 评审请求/接收纪律与争议发现的辩论式裁决。"
       },
       {
         "dir": "manual/evolve",
