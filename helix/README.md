@@ -32,6 +32,10 @@ main.js     helix_gate：歧义门/漂移门/loop 裁决的确定性计算器
 | 人格/评审 | 两阶段评审 | 评审提示词 | 九人格（需运行时加载） | **九人格纯文本清单 + 派发即用提示词 + 两阶段评审** |
 | 权威边界 | 强制流程 | 用户优先 | 契约锁定 | **用户与项目规则永远最高；纪律为风险服务** |
 
+## 跨宿主版本
+
+要在 Cindy 之外（Claude Code / Codex / OpenCode / Pi / OMP 等）使用 Helix，见独立技能包仓库：[mutsuki14/helix](https://github.com/mutsuki14/helix)。同一宿主不要同时装两个版本。
+
 ## 使用
 
 装入并开启后：`$helix <任务>` 显式进环；或直接布置工程任务，Agent 会按 `whenToUse` 自动想起。口令：`helix seed / grill / plan / review / unstuck / status / retro / adr`。
