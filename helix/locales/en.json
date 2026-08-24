@@ -4,9 +4,9 @@
   "whenToUse": "Disciplined coding: clarify vague requirements, write specs and acceptance criteria, root-cause debugging, verify evidence before claiming done, non-converging iterations, getting unstuck, long cross-session tasks, ADRs, retiring legacy code. Also on: helix, seed, grill, unstuck.",
   "tools": {
     "helix_gate": {
-      "description": "Helix quantitative gate calculator, three deterministic auditable modes. mode=ambiguity: ambiguity gate (threshold ≤0.2), per-dimension clarity self-scores goal/constraints/success plus context for brownfield; mode=drift: drift gate (threshold ≤0.3), deviation scores goal/constraints/ontology; mode=loop: evolution-loop ruling — pass ac_total and per-loop ac_passed_history (plus spinning/oscillation flags); auto-detects no-progress and diminishing-returns projection, returns converged/continue/unstuck/cap-reached. Optional threshold passes a retro-calibrated stricter gate (tighten-only).",
+      "description": "Helix quantitative gate calculator, five deterministic auditable modes. mode=ambiguity: ambiguity gate (≤0.2), clarity self-scores goal/constraints/success plus context for brownfield; mode=drift: drift gate (≤0.3), deviation scores goal/constraints/ontology; mode=loop: evolution-loop ruling from ac_total + ac_passed_history, auto-detects no-progress and diminishing returns, returns converged/continue/unstuck/cap-reached; mode=receipt: grades receipt confidence A/B/C deterministically from raw check facts (checks + uncovered) — grades must not be hand-assigned; mode=calibrate: pass the calibration ledger records to measure self-score optimism vs actual rework and get a tighten recommendation. Optional threshold passes a retro-calibrated stricter gate (tighten-only).",
       "parameters": {
-        "/properties/mode": { "description": "ambiguity = ambiguity gate; drift = drift gate; loop = convergence/stall ruling for the evolution loop" },
+        "/properties/mode": { "description": "ambiguity = ambiguity gate; drift = drift gate; loop = convergence/stall ruling; receipt = confidence grading; calibrate = self-score calibration stats" },
         "/properties/goal": { "description": "Goal dimension score (ambiguity/drift modes)" },
         "/properties/constraints": { "description": "Constraints dimension score (ambiguity/drift modes)" },
         "/properties/success": { "description": "Success-criteria dimension score (required in ambiguity mode)" },
@@ -18,7 +18,10 @@
         "/properties/ac_passed_history": { "description": "ACs passed at the end of each loop, in order; last entry is the current loop (required in loop mode)" },
         "/properties/max_loops": { "description": "Hard loop cap, default 5 (loop mode)" },
         "/properties/repeated_same_error": { "description": "Whether this loop hit essentially the same error as the previous one (spinning signal, loop mode)" },
-        "/properties/oscillation": { "description": "Whether fixes flip-flop between breaking A and breaking B (oscillation signal, loop mode)" }
+        "/properties/oscillation": { "description": "Whether fixes flip-flop between breaking A and breaking B (oscillation signal, loop mode)" },
+        "/properties/checks": { "description": "Raw facts of the checks run this round (receipt mode): name, exit_code (0 = pass), fresh (run after the change), scope (target / regression / other)" },
+        "/properties/uncovered": { "description": "Honest list of known uncovered areas (receipt mode; may be empty)" },
+        "/properties/records": { "description": "Calibration ledger records from .helix/calibration.jsonl (calibrate mode): ambiguity score at the time, actual loops used, final drift" }
       }
     }
   }

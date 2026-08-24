@@ -50,7 +50,7 @@ Ambiguity = 1 − Σ(clarity_i × weight_i)
 
 ## 第三步：结晶 Seed（不可变规格）
 
-过门后把共识结晶成 Seed。格式：
+过门后把共识结晶成 Seed。**快速起步**：bugfix / feature / refactor / migration 四类任务有预填模板，读 `clarify/templates.md` 取用（填空 + 删不适用项，占位必须填实）。通用格式：
 
 ```markdown
 # Seed: <任务名>            （版本: seed-N，日期）
