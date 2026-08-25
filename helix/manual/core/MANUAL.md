@@ -70,7 +70,7 @@ Helix 是一套工程方法环，融合两条血统，并以第三方生态之�
 
 | 文件 | 内容 | 何时读 |
 |---|---|---|
-| `core/personas.md` | 九人格清单 + 派发即用提示词 | 派评审/脱困/访谈子代理前 |
+| `core/personas.md` | 九人格 + 派发即用提示词 + 无子代理回退协议 | 派评审/脱困/访谈子代理前 |
 | `core/domains.md` | 领域专家人格（迁移/并发/安全/性能/前端）+ 触发映射 | 改动命中特定领域的共识门/评审 |
 | `core/routing.md` | triage 分级、升降级协议、插入任务、上下文预算、模型分层、宿主计划衔接 | 中途改道；插入请求；上下文快满；分级拿不准 |
 | `clarify/MANUAL.md` | 苏格拉底访谈、歧义门、Seed 结晶 | L2 开工前；`helix seed` |
@@ -100,7 +100,7 @@ Helix 是一套工程方法环，融合两条血统，并以第三方生态之�
 | `helix plan` | 写实现计划（`build/plan.md`） |
 | `helix review` | 派独立代码评审（`verify/review.md`） |
 | `helix unstuck` / "卡住了" | 停滞诊断 + 五视角脱困 |
-| `helix status` | 读 journal 汇报圈状态 |
+| `helix status` | 读 `.helix/journal.md` 汇报圈状态 |
 | `helix retro` | 复盘并记学习账本 |
 | `helix adr` | 记一条架构决策 |
 
