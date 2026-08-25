@@ -7,12 +7,14 @@
 ```
 manual/
   core/     MANUAL.md 总路由(分级/努力度阶梯/索引/口令) + personas.md 九人格
-  clarify/  MANUAL.md 访谈+歧义门+Seed + grill.md 压测 + brownfield.md 棕地考古
+            + domains.md 领域专家人格 + routing.md 路由协议
+  clarify/  MANUAL.md 访谈+歧义门+Seed + templates.md Seed 模板库
+            + grill.md 压测 + brownfield.md 棕地考古
   build/    MANUAL.md 基线优先 + plan.md 计划 + tdd.md + debugging.md
             + subagents.md 派发与两阶段评审 + git.md
   verify/   MANUAL.md 三级评估门+收据 + review.md 代码评审
   evolve/   MANUAL.md 循环裁决+脱困+账本+反熵 + retro.md 复盘学习环
-main.js     helix_gate：歧义门/漂移门/loop 裁决的确定性计算器
+main.js     helix_gate：6 种确定性模式(歧义/漂移/loop/收据/校准/分级)
 ```
 
 ## 与三个上游框架的对照
@@ -38,7 +40,7 @@ main.js     helix_gate：歧义门/漂移门/loop 裁决的确定性计算器
 
 ## 维护约定
 
-更新 Helix 时必须同步三处、版本号一致：本目录（含 `ghost_forge_pack` 重打包）、独立技能包仓库 [mutsuki14/helix](https://github.com/mutsuki14/helix)（转换规则见其 [MAINTAINING.md](https://github.com/mutsuki14/helix/blob/main/MAINTAINING.md)）、已装入实例。门槛逻辑改动须在 `main.js` 与对方仓库 `scripts/gate.mjs` 双端同改并测试。
+更新 Helix 时必须同步四处、版本号一致：本目录（含 `ghost_forge_pack` 重打包）、独立技能包仓库 [mutsuki14/helix](https://github.com/mutsuki14/helix)（转换规则见其 [MAINTAINING.md](https://github.com/mutsuki14/helix/blob/main/MAINTAINING.md)）、已装入实例。门槛逻辑改动须在 `main.js` 与对方仓库 `scripts/gate.mjs` 双端同改并测试。
 
 ## 使用
 

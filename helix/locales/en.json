@@ -1,7 +1,7 @@
 {
   "name": "Helix Method Loop",
   "description": "Helix method loop: fuses Aegis's baseline-first, evidence-verified discipline with Ouroboros's clarify-seed-evaluate-evolve cycle. Pure method manual, zero config — no extra LLM setup, API keys, or daemons; quantitative gates are self-scored by the agent.",
-  "whenToUse": "Disciplined coding: clarify vague requirements, write specs and acceptance criteria, root-cause debugging, verify evidence before claiming done, non-converging iterations, getting unstuck, long cross-session tasks, ADRs, retiring legacy code. Also on: helix, seed, grill, unstuck.",
+  "whenToUse": "Disciplined coding: clarify vague requirements, specs and acceptance criteria, plans, root-cause debugging, evidence before claiming done, code review, stalled iterations, getting unstuck, progress, retrospectives, ADRs. Also on: helix, seed, grill, plan, review, unstuck, status, retro, adr.",
   "tools": {
     "helix_gate": {
       "description": "Helix quantitative gate calculator, six deterministic auditable modes. mode=ambiguity: ambiguity gate (≤0.2); mode=drift: drift gate (≤0.3); mode=loop: evolution-loop ruling (converged/continue/unstuck/cap-reached); mode=receipt: grades receipt confidence A/B/C from raw check facts — grades must not be hand-assigned; mode=calibrate: ledger stats incl. threshold-tighten advice and triage-misjudge rate; mode=triage: complexity-level ruling (all seven signals required → L0/L1/L2 + Route line), only when torn between L1/L2. Optional threshold passes a retro-calibrated stricter gate (tighten-only).",

@@ -1,7 +1,10 @@
 // Helix Method Loop — method manual + deterministic gate calculator.
 // The methodology lives in the bundled manual (read via ghost_manual); this
-// sandbox logic only computes the weighted ambiguity/drift gate scores so the
-// quantitative thresholds stay auditable instead of being estimated mentally.
+// sandbox logic only computes the deterministic gate rulings (ambiguity /
+// drift / loop / receipt / calibrate / triage) so the quantitative thresholds
+// stay auditable instead of being estimated mentally.
+
+const MODES = ['ambiguity', 'drift', 'loop', 'receipt', 'calibrate', 'triage'];
 
 const GATES = {
   ambiguity: {
@@ -164,7 +167,12 @@ cindy.onHostMessage(async function (msg) {
       typeof c.fresh !== 'boolean' || !okScopes.includes(c.scope))) {
       return fail('receipt 模式需要 checks(非空数组,每项 {name, exit_code, fresh, scope: target|regression|other})');
     }
-    const uncovered = Array.isArray(args.uncovered) ? args.uncovered.filter((u) => typeof u === 'string') : [];
+    // uncovered 必须显式是字符串数组：传成单个字符串曾被静默丢弃，把本该 B 的评级抬到 A。
+    if (args.uncovered !== undefined &&
+        (!Array.isArray(args.uncovered) || args.uncovered.some((u) => typeof u !== 'string'))) {
+      return fail('receipt 模式的 uncovered 必须是字符串数组（只有一条也要写成 ["..."]）——传字符串或混入非字符串会被当作"无未覆盖面"错误抬高评级');
+    }
+    const uncovered = args.uncovered ?? [];
     const failed = checks.filter((c) => c.exit_code !== 0).map((c) => c.name);
     const stale = checks.filter((c) => c.fresh !== true).map((c) => c.name);
     const hasTarget = checks.some((c) => c.scope === 'target' && c.exit_code === 0 && c.fresh === true);
@@ -289,5 +297,5 @@ cindy.onHostMessage(async function (msg) {
     return;
   }
 
-  return fail('mode 必须是 "ambiguity"、"drift"、"loop"、"receipt" 或 "calibrate"');
+  return fail(`mode 必须是 ${MODES.map((m) => `"${m}"`).join('、')}`);
 });
