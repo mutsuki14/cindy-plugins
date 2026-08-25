@@ -4,7 +4,7 @@
   "name": "Helix Method Loop",
   "description": "Helix 工程方法环：融合 Aegis 的基线优先/证据验证纪律与 Ouroboros 的澄清-种子-评估-进化闭环。纯方法手册，零配置——不需要任何额外 LLM 设置、API key、守护进程或外部依赖，所有量化门槛由当前 Agent 自评执行。",
   "whenToUse": "编码与工程任务需要纪律时找我：需求含糊要先澄清、写规格与验收标准、写实现计划、动手前对齐项目基线、修 bug 要找根因、宣称完成前要验证证据、请人独立评审代码、多轮迭代不收敛、任务卡住要脱困、查任务进展、长任务跨会话续航、复盘总结经验、记录架构决策、清退旧逻辑。用户说 helix、seed/种子、grill/审问、plan、review、unstuck/脱困、status、retro/复盘、adr 时也找我。",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "entry": "main.js",
   "icon": "assets/icon.png",
   "command": "helix",
